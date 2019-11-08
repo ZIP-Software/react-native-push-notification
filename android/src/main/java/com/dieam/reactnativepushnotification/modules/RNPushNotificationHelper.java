@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
 import android.util.Log;
 
 import com.facebook.react.bridge.ReadableMap;
@@ -212,9 +211,6 @@ public class RNPushNotificationHelper {
         }
       }
 
-
-   
-
       NotificationCompat.Builder notification = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setContentTitle(title)
         .setTicker(bundle.getString("ticker"))
@@ -222,34 +218,22 @@ public class RNPushNotificationHelper {
         .setPriority(priority)
         .setAutoCancel(bundle.getBoolean("autoCancel", true));
 
-
       NotificationCompat.Builder summary = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setContentTitle(title)
         .setTicker(bundle.getString("ticker"))
         .setVisibility(visibility)
         .setPriority(priority)
         .setGroupSummary(true)
-        .setStyle(new NotificationCompat.InboxStyle()
-         )
-        .setGroup(group)
-
+        .setStyle(new NotificationCompat.InboxStyle())
         .setAutoCancel(bundle.getBoolean("autoCancel", true));
-
-
-
-
 
       String group = bundle.getString("group"); if (group != null)
       {
         notification.setGroup(group);
         summary.setGroup(group);
-
       }
 
-
-
       notification.setContentText(bundle.getString("message"));
-
       String largeIcon = bundle.getString("largeIcon");
 
       String subText = bundle.getString("subText");
@@ -301,9 +285,6 @@ public class RNPushNotificationHelper {
       if (bigText == null) {
         bigText = bundle.getString("message");
       }
-
-      // notification.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText));
-
 
       Intent intent = new Intent(context, intentClass);
       intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -388,7 +369,6 @@ public class RNPushNotificationHelper {
             continue;
           }
 
-
           Intent actionIntent = new Intent(context, intentClass);
           actionIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
           actionIntent.setAction(context.getPackageName() + "." + action);
@@ -401,8 +381,6 @@ public class RNPushNotificationHelper {
             PendingIntent.FLAG_UPDATE_CURRENT);
           notification.addAction(icon, action, pendingActionIntent);
          summary.addAction(icon, action, pendingActionIntent);
-
-
         }
       }
 
@@ -420,13 +398,9 @@ public class RNPushNotificationHelper {
        commit(editor);
       }
 
-
       Notification info = notification.build();
-
       Notification info2 = summary.build();
       info.defaults |= Notification.DEFAULT_LIGHTS;
-
-
 
         if (bundle.containsKey("tag")) {
           String tag = bundle.getString("tag");
@@ -436,14 +410,9 @@ public class RNPushNotificationHelper {
 
         } else {
           notificationManager.notify(notificationID, info);
-
-         notificationManager.notify(SUMMARY_ID, info2);
-
-
+          notificationManager.notify(SUMMARY_ID, info2);
         }
-
-
-
+        
       // Can't use setRepeating for recurring notifications because setRepeating
       // is inexact by default starting API 19 and the notifications are not fired
       // at the exact time. During testing, it was found that notifications could
