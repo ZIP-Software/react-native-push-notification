@@ -330,5 +330,8 @@ Notifications.clearAllNotifications = function() {
 	// Only available for Android
 	return this.callNative('clearAllNotifications', arguments)
 }
+Notifications.cancelNotificationByTag = function(){
+	return this.callNative('cancelNotificationByTag', arguments)
+}
 
 module.exports = Notifications;

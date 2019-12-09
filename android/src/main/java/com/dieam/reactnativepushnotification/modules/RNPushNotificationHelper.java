@@ -500,6 +500,10 @@ public class RNPushNotificationHelper {
     NotificationManager notificationManager = notificationManager();
     notificationManager.cancelAll();
   }
+  public void cancelNotificationByTag(String tag) {
+    NotificationManager notificationManager = notificationManager();
+    notificationManager.cancel(tag, 0);
+    }
 
   public void clearNotification(int notificationID) {
     Log.i(LOG_TAG, "Clearing notification: " + notificationID);
