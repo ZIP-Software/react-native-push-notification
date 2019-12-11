@@ -236,4 +236,8 @@ public class RNPushNotification extends ReactContextBaseJavaModule implements Ac
     public void registerNotificationActions(ReadableArray actions) {
         registerNotificationsReceiveNotificationActions(actions);
     }
+    @ReactMethod
+    public void cancelNotificationByTag(String tag) {
+      RNPushNotificationHelper.cancelNotificationByTag(tag);
+    }
 }
