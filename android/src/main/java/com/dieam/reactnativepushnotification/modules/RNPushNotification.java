@@ -237,8 +237,7 @@ public class RNPushNotification extends ReactContextBaseJavaModule implements Ac
         registerNotificationsReceiveNotificationActions(actions);
     }
     @ReactMethod
-    //Cancels Notification by chatId(Tag)
     public void cancelNotificationByTag(String tag) {
-      mRNPushNotificationHelper.cancelNotificationByTag(tag);
+      RNPushNotificationHelper.cancelNotificationByTag(tag);
     }
 }

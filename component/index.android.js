@@ -117,7 +117,7 @@ NotificationsComponent.prototype.clearAllNotifications = function() {
 }
 NotificationsComponent.prototype.cancelNotificationByTag = function(tag: String) {
 	RNPushNotification.cancelNotificationByTag(tag)
-  }
+}
 
 module.exports = {
 	state: false,
