@@ -230,6 +230,6 @@ public class RNPushNotification extends ReactContextBaseJavaModule implements Ac
     }
     @ReactMethod
     public void cancelNotificationByTag(String tag) {
-      RNPushNotificationHelper.cancelNotificationByTag(tag);
+      mRNPushNotificationHelper.cancelNotificationByTag(tag);
     }
 }
